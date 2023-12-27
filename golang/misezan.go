@@ -6,10 +6,16 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
+/*
+整数及び浮動小数点数を扱う型
+*/
 type Number interface {
 	constraints.Integer | constraints.Float
 }
 
+/*
+見せ算をする関数
+*/
 func Calc[T Number](a T, b T) float64 {
 	var pattern = map[byte]byte{
 		'6': '9',
