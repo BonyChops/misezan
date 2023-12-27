@@ -22,6 +22,7 @@ func Calc[T Number](a T, b T) float64 {
 		'9': '6',
 		'2': '5',
 		'5': '2',
+		'.': '.',
 	}
 
 	if a == b {

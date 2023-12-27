@@ -67,6 +67,27 @@ func internalTestMisezanExtra[T misezan.Number](t *testing.T) {
 	internalTestMisezanWithCases[T](t, cases.Extra)
 }
 
+func internalTestMisezanExtraFloat[T misezan.Number](t *testing.T) {
+	rawJson, err := os.ReadFile("../test/test_cases.json")
+	if err != nil {
+		t.Errorf("Failed to read test_cases.json: %v", err)
+	}
+
+	var cases struct {
+		ExtraFloat []struct {
+			A, B T
+			Ans  float64
+		}
+	}
+
+	if err = json.Unmarshal(rawJson, &cases); err != nil {
+		t.Errorf("Failed to unmarshal test_cases.json: %v", err)
+		return
+	}
+
+	internalTestMisezanWithCases[T](t, cases.ExtraFloat)
+}
+
 func TestMisezanInt(t *testing.T) {
 	internalTestMisezanBasic[int](t)
 }
@@ -97,4 +118,46 @@ func TestMisezanInt64(t *testing.T) {
 
 func TestMisezanInt64Extra(t *testing.T) {
 	internalTestMisezanExtra[int64](t)
+}
+
+func TestMisezanUint(t *testing.T) {
+	internalTestMisezanBasic[uint](t)
+}
+
+func TestMisezanUintExtra(t *testing.T) {
+	internalTestMisezanExtra[uint](t)
+}
+
+func TestMisezanUint8(t *testing.T) {
+	internalTestMisezanBasic[uint8](t)
+}
+
+func TestMisezanUint16(t *testing.T) {
+	internalTestMisezanBasic[uint16](t)
+}
+
+func TestMisezanUint32(t *testing.T) {
+	internalTestMisezanBasic[uint32](t)
+}
+
+func TestMisezanUint32Extra(t *testing.T) {
+	internalTestMisezanExtra[uint32](t)
+}
+
+func TestMisezanUint64(t *testing.T) {
+	internalTestMisezanBasic[uint64](t)
+}
+
+func TestMisezanUint64Extra(t *testing.T) {
+	internalTestMisezanExtra[uint64](t)
+}
+
+func TestMisezanFloat32(t *testing.T) {
+	internalTestMisezanBasic[float32](t)
+	internalTestMisezanExtraFloat[float32](t)
+}
+
+func TestMisezanFloat64(t *testing.T) {
+	internalTestMisezanBasic[float64](t)
+	internalTestMisezanExtraFloat[float64](t)
 }
