@@ -19,6 +19,12 @@ const { Calc } = require("misezan-js");
 Calc(1, 1); // == 0
 ```
 
+## テスト
+
+```
+npm run test
+```
+
 ## 定義
 
 [BonyChops/misezan](https://github.com/BonyChops/misezan)をご覧ください。

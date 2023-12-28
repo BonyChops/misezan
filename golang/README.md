@@ -7,3 +7,9 @@ Go の見せ算計算パッケージ
 ```
 go get github.com/BonyChops/misezan/golang
 ```
+
+## テスト
+
+```
+go test ./...
+```
