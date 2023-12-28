@@ -1,4 +1,4 @@
-# misezan
+# misezan-js
 
 JS/TS の見せ算計算パッケージ
 

@@ -1,6 +1,6 @@
 {
   "name": "misezan-js",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "JS/TSの見せ算計算パッケージ",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
