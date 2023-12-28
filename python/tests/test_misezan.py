@@ -19,3 +19,4 @@ with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "..", 
     @pytest.mark.parametrize("case", case_sets['basic'] + case_sets['extra'] + case_sets['extraFloat'])
     def test_eval(case):
         assert misezan.calc(case['a'], case['b']) == case['ans']
+        assert misezan.calc(case['b'], case['a']) == case['ans']
