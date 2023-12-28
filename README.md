@@ -2,9 +2,16 @@
 
 見せ算の眼を求めるパッケージ群
 
+## インストール
+
+| 言語  | インストール                                 |
+| ----- | -------------------------------------------- |
+| JS/TS | `npm i misezan-js`                           |
+| Go    | `go get github.com/BonyChops/misezan/golang` |
+
 ## 見せ算とは
 
-見せ算とは、M-1 グランプリ 2023 の決勝ネタにて、さや香が提唱した演算([動画](https://lemino.docomo.ne.jp/?crid=Y3JpZDovL3BsYWxhLmlwdHZmLmpwL3ZvZC8wMDAwMDAwMDAwX2wwbHFhdTA2dnM%3D))である。実際のネタでは以下のことが提唱された。
+見せ算とは、M-1 グランプリ 2023 の決勝ネタにて、さや香が提唱した演算([動画](https://lemino.docomo.ne.jp/contents/Y3JpZDovL3BsYWxhLmlwdHZmLmpwL3ZvZC8wMDAwMDAwMDAwX2wwbHFhdTA2dnM=?pit_git_type=LIVE_SINGLE))である。実際のネタでは以下のことが提唱された。
 
 - 四則演算に五則目を足し、それを「見せ算」とする
 - 「見せ算」とは、数字と数字を見せあわせて、それらがどう思うかを基準に計算を行う演算方式である
