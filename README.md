@@ -4,10 +4,11 @@
 
 ## インストール
 
-| 言語  | インストール                                 |
-| ----- | -------------------------------------------- |
-| JS/TS | `npm i misezan-js`                           |
-| Go    | `go get github.com/BonyChops/misezan/golang` |
+| 言語   | インストール                                                                                    |
+| ------ | ----------------------------------------------------------------------------------------------- |
+| JS/TS  | `npm i misezan-js`                                                                              |
+| Go     | `go get github.com/BonyChops/misezan/golang`                                                    |
+| Python | `pip install "git+https://github.com/BonyChops/misezan.git#egg=misezan-py&subdirectory=python"` |
 
 ## 見せ算とは
 
