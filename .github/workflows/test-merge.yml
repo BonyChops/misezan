@@ -7,6 +7,9 @@ name: Test for Every Language on Merge
 jobs:
   test_typescript:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./typescript
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -15,6 +18,9 @@ jobs:
       - run: npm ci && npm run test && npm run build
   test_go:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./golang
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
