@@ -14,7 +14,9 @@ jobs:
           node-version: "18"
           cache-dependency-path: "typescript"
           cache: "npm"
-      - run: npm ci && npm run test && npm run build
+      - run: npm ci
+      - run: npm run test
+      - run: npm run build
   test_go:
     runs-on: ubuntu-latest
     defaults:
