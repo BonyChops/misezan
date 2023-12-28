@@ -1,0 +1,33 @@
+name: Test for Every Language on Merge
+"on":
+  push:
+    branches:
+      - main
+
+jobs:
+  test_typescript:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./typescript
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache-dependency-path: "typescript"
+          cache: "npm"
+      - run: npm ci && npm run test && npm run build
+  test_go:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./golang
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.21"
+          cache-dependency-path: "golang"
+          cache: true
+      - run: go test ./...
