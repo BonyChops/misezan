@@ -15,6 +15,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "18"
+          cache-dependency-path: "typescript"
+          cache: "npm"
       - run: npm ci && npm run test && npm run build
   test_go:
     runs-on: ubuntu-latest
@@ -26,4 +28,6 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: "1.17"
+          cache-dependency-path: "golang"
+          cache: "go"
       - run: go test ./...
