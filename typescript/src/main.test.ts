@@ -6,6 +6,7 @@ Object.keys(testCases).forEach((key) => {
     const { a, b, ans } = testCase;
     test(`[${key}] ${a} 見せ ${b} = ${ans}`, () => {
       expect(Calc(a, b)).toBe(ans);
+      expect(Calc(b, a)).toBe(ans);
     });
   });
 });
