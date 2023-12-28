@@ -31,3 +31,21 @@ jobs:
           cache-dependency-path: "golang"
           cache: true
       - run: go test ./...
+  test_python:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./python
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache-dependency-path: "python"
+          cache: "pip"
+      - run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev] --use-pep517
+          pip install build
+      - run: pytest
+      - run: python -m build
