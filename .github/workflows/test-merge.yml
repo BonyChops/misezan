@@ -51,3 +51,42 @@ jobs:
           pip install build
       - run: pytest
       - run: python -m build
+  test_hsp:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./hsp
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache HSP
+        id: cache_hsp
+        uses: actions/cache@v3
+        with:
+          path: |
+            OpenHSP-3.6
+          key: "hsp-v3.6"
+
+      - name: Download
+        if: steps.cache_hsp.outputs.cache-hit != 'true'
+        run: curl -L https://github.com/onitama/OpenHSP/archive/refs/tags/v3.6.tar.gz -o hsp.tar.gz
+      - name: Extract
+        if: steps.cache_hsp.outputs.cache-hit != 'true'
+        run: tar -zxvf hsp.tar.gz
+      - name: Build hspcmp
+        if: steps.cache_hsp.outputs.cache-hit != 'true'
+        run: make hspcmp
+        working-directory: hsp/OpenHSP-3.6
+      - name: Build hsp3cl
+        if: steps.cache_hsp.outputs.cache-hit != 'true'
+        run: make hsp3cl
+        working-directory: hsp/OpenHSP-3.6
+      - name: Add Path
+        run: |
+          echo "$(pwd)/OpenHSP-3.6"
+          echo "$(pwd)/OpenHSP-3.6" >> $GITHUB_PATH
+      - name: Generate Test
+        run: ./generate_testcases.sh
+      - name: Build Test
+        run: hspcmp -d -i -u ./misezan_test.hsp -o./misezan_test.ax
+      - name: Run Test
+        run: hsp3cl ./misezan_test.ax
