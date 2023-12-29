@@ -7,5 +7,5 @@ HSP の見せ算計算スクリプト
 ```hsp
 #include "misezan.as"
 
-calc(1, 1)@Misezan ; = 0
+calc_misezan(1, 1) ; = 0
 ```

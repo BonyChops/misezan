@@ -1,5 +1,5 @@
 #module Misezan
-#defcfunc calc int a, int b
+#defcfunc calc_misezan int a, int b
     if a = b : return 0
 
     if a > b {

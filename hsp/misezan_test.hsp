@@ -24,10 +24,10 @@ repeat total
     b = int(b_str)
     ans = double(ans_str)
 
-    result = calc(a, b)@Misezan == ans
+    result = calc_misezan(a, b) == ans
     if result : status = " " : else : status = "☓"
     if result : error_str = "" : else : error_str = " (want: " + ans + ")"
-    mes "" + status + " " + a + " 見せ" + b + " = " + calc(a, b)@Misezan + error_str
+    mes "" + status + " " + a + " 見せ" + b + " = " + calc_misezan(a, b) + error_str
     if result {
         pass++
     }
