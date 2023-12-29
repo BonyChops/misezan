@@ -81,6 +81,8 @@ jobs:
         run: |
           sudo ln -s "$(pwd)/OpenHSP-3.6/hspcmp" hspcmp
           sudo ln -s "$(pwd)/OpenHSP-3.6/hsp3cl" hsp3cl
+          sudo chmod +x hspcmp
+          sudo chmod +x hsp3cl
         working-directory: /usr/bin
       - name: Generate Test
         run: ./generate_testcases.sh
