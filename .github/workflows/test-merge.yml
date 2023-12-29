@@ -1,4 +1,4 @@
-name: Test for Every Language on Merge
+name: Test on Merge
 "on":
   push:
     branches:
