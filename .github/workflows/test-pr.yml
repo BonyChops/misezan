@@ -79,9 +79,9 @@ jobs:
         working-directory: hsp/OpenHSP-3.6
       - name: Add Symlinks
         run: |
-          cd /usr/bin; \
           sudo ln -s "$(pwd)/OpenHSP-3.6/hspcmp" hspcmp
           sudo ln -s "$(pwd)/OpenHSP-3.6/hsp3cl" hsp3cl
+        working-directory: /usr/bin
       - name: Generate Test
         run: ./generate_testcases.sh
       - name: Build Test
