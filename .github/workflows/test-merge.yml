@@ -80,10 +80,14 @@ jobs:
         if: steps.cache_hsp.outputs.cache-hit != 'true'
         run: make hsp3cl
         working-directory: hsp/OpenHSP-3.6
+      - name: Add Symlinks
+        run: |
+          cd /usr/bin; \
+          ln -s /OpenHSP-3.6/hspcmp hspcmp
+          ln -s /OpenHSP-3.6/hsp3cl hsp3cl
       - name: Generate Test
         run: ./generate_testcases.sh
       - name: Build Test
-        run: ./OpenHSP-3.6/hspcmp -d -i -u ./misezan_test.hsp -o./misezan_test.ax
+        run: hspcmp -d -i -u ./misezan_test.hsp -o./misezan_test.ax
       - name: Run Test
-        run: ./OpenHSP-3.6/hsp3cl ./misezan_test.ax
-        working-directory: hsp
+        run: hsp3cl ./misezan_test.ax
