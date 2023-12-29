@@ -80,8 +80,8 @@ jobs:
       - name: Add Symlinks
         run: |
           cd /usr/bin; \
-          ln -s "$(pwd)/OpenHSP-3.6/hspcmp" hspcmp
-          ln -s "$(pwd)/OpenHSP-3.6/hsp3cl" hsp3cl
+          sudo ln -s "$(pwd)/OpenHSP-3.6/hspcmp" hspcmp
+          sudo ln -s "$(pwd)/OpenHSP-3.6/hsp3cl" hsp3cl
       - name: Generate Test
         run: ./generate_testcases.sh
       - name: Build Test
