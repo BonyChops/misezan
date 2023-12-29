@@ -1,4 +1,4 @@
-name: Test for Every Language on PR
+name: Test on PR
 "on": pull_request
 
 jobs:
