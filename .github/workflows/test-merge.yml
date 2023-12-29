@@ -80,13 +80,10 @@ jobs:
         if: steps.cache_hsp.outputs.cache-hit != 'true'
         run: make hsp3cl
         working-directory: hsp/OpenHSP-3.6
-      - name: Add Symlinks
+      - name: Add Path
         run: |
-          sudo ln -s "$(pwd)/OpenHSP-3.6/hspcmp" hspcmp
-          sudo ln -s "$(pwd)/OpenHSP-3.6/hsp3cl" hsp3cl
-          sudo chmod +x hspcmp
-          sudo chmod +x hsp3cl
-        working-directory: /usr/bin
+          echo "$(pwd)/OpenHSP-3.6"
+          echo "$(pwd)/OpenHSP-3.6" >> $GITHUB_PATH
       - name: Generate Test
         run: ./generate_testcases.sh
       - name: Build Test
