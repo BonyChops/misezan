@@ -9,6 +9,7 @@
 | JS/TS  | `npm i misezan-js`                                                                              |
 | Go     | `go get github.com/BonyChops/misezan/golang`                                                    |
 | Python | `pip install "git+https://github.com/BonyChops/misezan.git#egg=misezan-py&subdirectory=python"` |
+| HSP    | [`/hsp`](https://github.com/BonyChops/misezan/tree/main/hsp)を参照                              |
 
 ## 見せ算とは
 
