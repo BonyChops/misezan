@@ -2,6 +2,7 @@
 
 sdim data
 notesel data
+mes "Loading " + dirinfo(1) + "/test_cases.csv"
 noteload dirinfo(1) + "/test_cases.csv"
 i = 0
 total = noteinfo(0) * 2
