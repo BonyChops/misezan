@@ -80,6 +80,6 @@ jobs:
       - name: Generate Test
         run: ./generate_testcases.sh
       - name: Build Test
-        run: ./OpenHSP-3.6/hspcmp -d -i -u ./misezan_test.hsp
+        run: ./OpenHSP-3.6/hspcmp -d -i -u ./misezan_test.hsp -o./misezan_test.ax
       - name: Run Test
         run: ./OpenHSP-3.6/hsp3cl ./misezan_test.ax
