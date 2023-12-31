@@ -1,45 +1,100 @@
 #include "misezan.as"
 
-sdim data
-notesel data
-mes "Loading " + dirinfo(1) + "/test_cases.csv"
-noteload dirinfo(1) + "/test_cases.csv"
-i = 0
-total = noteinfo(0) * 2
-pass = 0
-repeat total
-    sdim each_data, 256
-    sdim a_str, 256
-    sdim b_str, 256
-    sdim ans_str, 256
+#module
+#defcfunc test_calc_misezan
+    sdim data
+    notesel data
+    mes "Loading " + dirinfo(1) + "/test_cases.csv"
+    noteload dirinfo(1) + "/test_cases.csv"
+    i = 0
+    total = noteinfo(0) * 2
+    pass = 0
+    repeat total
+        sdim each_data, 256
+        sdim a_str, 256
+        sdim b_str, 256
+        sdim ans_str, 256
 
-	noteget each_data, i / 2
+        noteget each_data, i / 2
 
-    if i \ 2 = 0 {
-        split each_data, ",", a_str, b_str, ans_str
+        if i \ 2 = 0 {
+            split each_data, ",", a_str, b_str, ans_str
+        } else {
+            split each_data, ",", b_str, a_str, ans_str
+        }
+
+        a = int(a_str)
+        b = int(b_str)
+        ans = double(ans_str)
+
+        result = calc_misezan(a, b) == ans
+        if result : status = " " : else : status = "☓"
+        if result : error_str = "" : else : error_str = " (want: " + ans + ")"
+        mes "" + status + " " + a + " 見せ" + b + " = " + calc_misezan(a, b) + error_str
+        if result {
+            pass++
+        }
+        i++
+    loop
+    mes ""
+    mes "Pass: " + pass + "/" + total
+    if pass == total {
+        mes "All tests passed!"
+        return 0
     } else {
-        split each_data, ",", b_str, a_str, ans_str
+        mes "Some tests failed."
+        return 1
     }
+#global
 
-    a = int(a_str)
-    b = int(b_str)
-    ans = double(ans_str)
+#module
+#defcfunc test_calc_misezan_double
+    sdim data
+    notesel data
+    mes "Loading " + dirinfo(1) + "/test_cases_float.csv"
+    noteload dirinfo(1) + "/test_cases_float.csv"
+    i = 0
+    total = noteinfo(0) * 2
+    pass = 0
+    repeat total
+        sdim each_data, 256
+        sdim a_str, 256
+        sdim b_str, 256
+        sdim ans_str, 256
 
-    result = calc_misezan(a, b) == ans
-    if result : status = " " : else : status = "☓"
-    if result : error_str = "" : else : error_str = " (want: " + ans + ")"
-    mes "" + status + " " + a + " 見せ" + b + " = " + calc_misezan(a, b) + error_str
-    if result {
-        pass++
+        noteget each_data, i / 2
+
+        if i \ 2 = 0 {
+            split each_data, ",", a_str, b_str, ans_str
+        } else {
+            split each_data, ",", b_str, a_str, ans_str
+        }
+
+        a = double(a_str)
+        b = double(b_str)
+        ans = double(ans_str)
+
+        result = calc_misezan(a, b) == ans
+        if result : status = " " : else : status = "☓"
+        if result : error_str = "" : else : error_str = " (want: " + ans + ")"
+        mes "" + status + " " + a + " 見せ" + b + " = " + calc_misezan(a, b) + error_str
+        if result {
+            pass++
+        }
+        i++
+    loop
+    mes ""
+    mes "Pass: " + pass + "/" + total
+    if pass == total {
+        mes "All tests passed!"
+        return 0
+    } else {
+        mes "Some tests failed."
+        return 1
     }
-    i++
-loop
+#global
+
+res1 = test_calc_misezan()
 mes ""
-mes "Pass: " + pass + "/" + total
-if pass == total {
-    mes "All tests passed!"
-    end 0
-} else {
-    mes "Some tests failed."
-    end 1
-}
+res2 = test_calc_misezan_double()
+end res1 || res2
